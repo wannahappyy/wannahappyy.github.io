@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>wannahappy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+  --bg: #d9f5db;
+  --text: #1b3a2f;
+  --card: #ffffff;
+}
+
+body.dark {
+  --bg: #0f2f24;
+  --text: #e8f5e9;
+  --card: #1b4d3e;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+  padding: 20px;
+  z-index: 2;
+}
+
+.avatar {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  object-fit: cover;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+h1 {
+  margin: 5px 0;
+  font-size: 30px;
+}
+
+.subtitle {
+  color: gray;
+  margin-bottom: 25px;
+  min-height: 20px;
+}
+
+.link {
+  display: block;
+  background: var(--card);
+  padding: 14px;
+  margin-bottom: 12px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--text);
+  transition: 0.25s;
+}
+
+.link:hover {
+  transform: translateY(-3px);
+  opacity: 0.95;
+}
+
+body.dark .link:hover {
+  background: #2e6f5e;
+}
+
+.controls {
+  margin-top: 15px;
+}
+
+button {
+  margin: 5px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* FLOATING STICKERS */
+.sticker {
+  position: absolute;
+  width: 70px;
+  opacity: 0.9;
+}
+
+.left1 { top: 10%; left: 5%; }
+.left2 { bottom: 15%; left: 8%; }
+.right1 { top: 15%; right: 5%; }
+.right2 { bottom: 10%; right: 8%; }
+
+</style>
+</head>
+
+<body>
+
+<!-- STICKERS -->
+<img class="sticker left1" src="https://i.imgur.com/your1.png">
+<img class="sticker left2" src="https://i.imgur.com/your2.png">
+<img class="sticker right1" src="https://i.imgur.com/your3.png">
+<img class="sticker right2" src="https://i.imgur.com/your4.png">
+
+<div class="container">
+
+<img class="avatar" src="https://i.imgur.com/youravatar.jpg">
+
+<h1>wannahappy</h1>
+
+<div class="subtitle" id="typing"></div>
+
+<a class="link" href="https://instagram.com/wannahappy" target="_blank">Instagram</a>
+<a class="link" href="https://pinterest.com/wannahappy" target="_blank">Pinterest</a>
+<a class="link" href="https://reddit.com/user/wannahappy" target="_blank">Reddit</a>
+<a class="link" href="https://twitter.com/wannahappy" target="_blank">X (Twitter)</a>
+<a class="link" href="#">Rednote</a>
+
+<div class="controls">
+  <button onclick="toggleTheme()">🌗</button>
+  <button onclick="toggleMusic()">🎧</button>
+</div>
+
+<div class="footer">
+  stay soft, stay real ✿
+</div>
+
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Lofi_Chill/lofi/lofi-chill.mp3">
+</audio>
+
+<script>
+// typing
+const text = "a place for me";
+let i = 0;
+function typing() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 50);
+  }
+}
+typing();
+
+// theme toggle
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+}
+
+// music
+let playing = false;
+function toggleMusic() {
+  const music = document.getElementById("music");
+  if (!playing) {
+    music.play();
+    playing = true;
+  } else {
+    music.pause();
+    playing = false;
+  }
+}
+</script>
+
+</body>
+</html>
